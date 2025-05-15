@@ -201,6 +201,21 @@ raise_application_error ( -20204, 'Invalid department ID. Try again.');
 end if;
 end add_employee;
 
+execute add_employee('Kabir', 'Hossan', 'hossankabirq', p_id  => 80)
+
+13.
+Create or replace procedure process_employees
+is
+cursor cur_emp_cursor is
+select employee_id
+from employees;
+begin
+for emp_rec IN cur_emp_cursor
+loop
+raise_salary (emp_rec.employee_id, 10);
+end loop;
+end process_employees;
+
 
 
 
